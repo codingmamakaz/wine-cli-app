@@ -1,4 +1,4 @@
-class CLI
+class WineCli::CLI
 
   def call
     start
@@ -7,7 +7,7 @@ class CLI
   def list
     puts ""
     puts "Here are the list of wines to pair with food."
-    Scraper.scrape_wines
+    WineCli::Scraper.scrape_wines
   end
 
 
