@@ -9,9 +9,15 @@ class WineCli::CLI
     puts ""
     puts "Here are the list of wines to pair with food."
     puts ""
-    WineCli::Scraper.scrape_wines
+    puts "Please select a wine varietal to view more information:"
     puts ""
-    puts "Please pick a number and enter:"
+    WineCli::Scraper.scrape_wines
+
+    input = gets.strip
+    input = input.to_i - 1
+# binding.pry
+    
+
   end
 
 
