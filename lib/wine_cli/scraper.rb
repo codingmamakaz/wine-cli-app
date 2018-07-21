@@ -14,8 +14,19 @@ class WineCli::Scraper
 
   def self.scrape_details
     doc = Nokogiri::HTML(open(BASE_URL))
-    doc.css('.caption.margin-24-bottom p').text
-    binding.pry
+
+    pairing_rule = doc.css('.caption.margin-24-bottom p').map do |rule|
+      rule = rule.text
+    end
+    recipe_url = doc.css('.caption.margin-24-bottom a').attribute('href').value
+
+    pairing_rule #<- I'm not sure if I need the return value of this, but I'm leaving it for now.
+    recipe_url #<- I'm not sure if I need the return value of this, but I'm leaving it for now.
+
+
+
+
+
   end
 
 
