@@ -6,20 +6,23 @@ class WineCli::CLI
     WineCli::Scraper.scrape_details #<- this is here only for test purposes
   end
 
-#   def list
-#     puts ""
-#     puts "Here are the list of wines to pair with food."
-#     puts ""
-#     puts "Please select a wine varietal to view more information:"
-#     puts ""
-#     WineCli::Scraper.scrape_wines
-#
-#     input = gets.strip
-#     input = input.to_i - 1
-# # binding.pry
-#
-#
-#   end
+  def list
+    puts ""
+    puts "Here are the list of wines to pair with food."
+    puts ""
+    WineCli::Scraper.scrape_wines
+  end
+
+  def menu
+    puts "Please select a wine varietal to view more information:"
+    puts ""
+
+
+    input = gets.strip
+    input = input.to_i - 1
+# binding.pry
+
+  end
 
 
 
