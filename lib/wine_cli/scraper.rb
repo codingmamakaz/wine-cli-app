@@ -12,5 +12,11 @@ class WineCli::Scraper
     end
   end
 
+  def self.scrape_details
+    doc = Nokogiri::HTML(open(BASE_URL))
+    doc.css('.caption.margin-24-bottom p').text
+    binding.pry
+  end
+
 
 end
