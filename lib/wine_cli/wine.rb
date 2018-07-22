@@ -19,12 +19,13 @@ class WineCli::Wine
     doc = Nokogiri::HTML(open(BASE_URL))
     wine = self.new
     wine.varietal = doc.css('.headline-link').children.text[/^[^\:]*/]
-    wine.pairing_rule = doc.css('.caption.margin-24-bottom p').map do |rule|
-      rule = rule.text
-    end
+# binding.pry
+    wine.pairing_rule = doc.css('.caption.margin-24-bottom p')
+
     wine.recipe_url = doc.css('.caption.margin-24-bottom a').attribute('href').value
 
     wine
+
   end
 
 
