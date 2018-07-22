@@ -4,13 +4,13 @@ class WineCli::Wine
 
   BASE_URL = "https://www.foodandwine.com/slideshows/15-rules-great-wine-and-food-pairings#10"
 
-  def self.scrape_all_wines
-    wines = []
-
-    wines << self.scrape_wine
-
-    wines
-  end
+  # def self.scrape_all_wines
+  #   wines = []
+  #
+  #   wines << self.scrape_wine
+  #
+  #   wines
+  # end
 
 
   def self.scrape_list_of_wines
@@ -18,11 +18,10 @@ class WineCli::Wine
     doc.css('.headline-link').children.each.with_index(1) do |varietal, i|
       varietal = varietal.text[/^[^\:]*/]
       puts "#{i}. #{varietal}"
-      # WineCli::Wine.new
     end
   end
 
-  def self.scrape_varietal(input)
+  def self.scrape_and_print_varietal(input)
     doc = Nokogiri::HTML(open(BASE_URL))
     doc.css('.headline-link').children[input.to_i - 1].text
   end
@@ -30,6 +29,11 @@ class WineCli::Wine
   def self.scrape_and_print_pairing_rule(input)
     doc = Nokogiri::HTML(open(BASE_URL))
     doc.css('.caption.margin-24-bottom p')[input.to_i - 1].text
+  end
+
+  def self.scrape_and_print_recipe_url(input)
+    doc = Nokogiri::HTML(open(BASE_URL))
+    doc.css('.caption.margin-24-bottom a').attribute('href').value
   end
 
   # def self.scrape_wine
