@@ -7,10 +7,20 @@ class WineCli::Scraper
     doc = Nokogiri::HTML(open(BASE_URL))
     doc.css('.headline-link').children.each.with_index(1).each do |varietal, i|
       varietal = varietal.text[/^[^\:]*/]
-      puts "#{i}. #{varietal}"  #<- 1. Pinot Noir There are 15 varietal
+      puts "#{i}. #{varietal}"
       WineCli::Wine.new(varietal)
     end
   end
+
+  # def self.scrape_wines
+  #   doc = Nokogiri::HTML(open(BASE_URL))
+  #   doc.css('.headline-link').children.each.with_index(1).each do |varietal, i|
+  #     varietal = varietal.text[/^[^\:]*/]
+  #     puts "#{i}. #{varietal}"
+  #     WineCli::Wine.new(varietal)
+  #   end
+  # end
+
 
   def self.scrape_varietal(input)
     doc = Nokogiri::HTML(open(BASE_URL))
