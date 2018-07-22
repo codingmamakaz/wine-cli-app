@@ -15,12 +15,12 @@ class WineCli::Wine
     @@all
   end
 
-  def self.scrape_wines
+  def self.scrape_all_wines
     doc = Nokogiri::HTML(open(BASE_URL))
     doc.css('.headline-link').children.each.with_index(1).each do |varietal, i|
       varietal = varietal.text[/^[^\:]*/]
       puts "#{i}. #{varietal}"
-      WineCli::Wine.new(varietal)
+      # WineCli::Wine.new(varietal)
     end
   end
 
@@ -28,18 +28,22 @@ class WineCli::Wine
     doc = Nokogiri::HTML(open(BASE_URL))
     doc.css('.headline-link').children[input.to_i - 1].text
   end
-  
-  def self.scrape_wine
+
+  def self.scrape_wine(input)
     doc = Nokogiri::HTML(open(BASE_URL))
+
     wine = self.new
-    wine.varietal = doc.css('.headline-link').children.text[/^[^\:]*/]
+
+    # wine.varietal = doc.css('.headline-link').children.text[/^[^\:]*/]
+    wine.varietal = doc.css('.headline-link').children[input.to_i - 1].text[/^[^\:]*/]
+
 # binding.pry
     wine.pairing_rule = doc.css('.caption.margin-24-bottom p')
 
     wine.recipe_url = doc.css('.caption.margin-24-bottom a').attribute('href').value
 
-    wine
-
+    @@all << wine
+binding.pry
   end
 
 

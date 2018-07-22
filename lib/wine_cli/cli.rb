@@ -11,13 +11,13 @@ class WineCli::CLI
   def list
     puts "Here are the list of wines to pair with food."
     puts ""
-    WineCli::Wine.scrape_wines
+    WineCli::Wine.scrape_all_wines
   end
 
   def menu
     puts ""
     input = nil
-    @wine = WineCli::Wine.scrape_wine
+    @wine = WineCli::Wine.scrape_wine(input)
     while input != "exit"
       puts "Please select a wine varietal and enter a number to view more information or type list to see the list again or type exit:"
       puts ""
@@ -26,7 +26,8 @@ class WineCli::CLI
       case input
       when "1"
         puts ""
-        puts "More info on 1: #{WineCli::Wine.scrape_varietal(input)}"
+        # puts "More info on 1: #{WineCli::Wine.scrape_varietal(input)}"
+        puts "More infor on 1: #{@wine.varietal}"
         puts ""
         puts "#{@wine.pairing_rule[input.to_i - 1].text} - check out a recipe to pair with the wine - #{@wine.recipe_url}"
         puts ""
@@ -127,7 +128,7 @@ class WineCli::CLI
   end
 
   def goodbye
-    puts "Cheers and goodbye!"
+    puts "Thank you for visiting! Cheers and goodbye!"
     puts ""
   end
 
