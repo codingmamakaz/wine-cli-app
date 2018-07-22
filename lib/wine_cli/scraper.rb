@@ -12,6 +12,11 @@ class WineCli::Scraper
     end
   end
 
+  def self.scrape_varietal(input)
+    doc = Nokogiri::HTML(open(BASE_URL))
+    doc.css('.headline-link').children[input.to_i - 1].text
+  end
+
   def self.scrape_details
     doc = Nokogiri::HTML(open(BASE_URL))
 
@@ -22,10 +27,6 @@ class WineCli::Scraper
 
     pairing_rule #<- I'm not sure if I need the return value of this, but I'm leaving it for now.
     recipe_url #<- I'm not sure if I need the return value of this, but I'm leaving it for now.
-
-
-
-
 
   end
 
