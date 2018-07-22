@@ -4,23 +4,21 @@ class WineCli::Wine
 
   BASE_URL = "https://www.foodandwine.com/slideshows/15-rules-great-wine-and-food-pairings#10"
 
-  @@all = []
-
-  def initialize(varietal = nil)
-    @varietal = varietal
-    @@all << self
-  end
-
-  def self.all
-    @@all
-  end
-
   def self.scrape_all_wines
+    wines = []
+
+    wines << self.scrape_wine
+
+    wines
+  end
+
+
+  def self.scrape_list_of_wines
     doc = Nokogiri::HTML(open(BASE_URL))
-    doc.css('.headline-link').children.each.with_index(1).each do |varietal, i|
+    doc.css('.headline-link').children.each.with_index(1) do |varietal, i|
       varietal = varietal.text[/^[^\:]*/]
       puts "#{i}. #{varietal}"
-      # WineCli::Wine.new(varietal)
+      # WineCli::Wine.new
     end
   end
 
@@ -29,22 +27,24 @@ class WineCli::Wine
     doc.css('.headline-link').children[input.to_i - 1].text
   end
 
-  def self.scrape_wine(input)
+  def self.scrape_and_print_pairing_rule(input)
     doc = Nokogiri::HTML(open(BASE_URL))
-
-    wine = self.new
-
-    # wine.varietal = doc.css('.headline-link').children.text[/^[^\:]*/]
-    wine.varietal = doc.css('.headline-link').children[input.to_i - 1].text[/^[^\:]*/]
-
-# binding.pry
-    wine.pairing_rule = doc.css('.caption.margin-24-bottom p')
-
-    wine.recipe_url = doc.css('.caption.margin-24-bottom a').attribute('href').value
-
-    @@all << wine
-binding.pry
+    doc.css('.caption.margin-24-bottom p')[input.to_i - 1].text
   end
+
+  # def self.scrape_wine
+  #   doc = Nokogiri::HTML(open(BASE_URL))
+  #
+  #   wine = self.new
+  #
+  #   wine.varietal = doc.css('.headline-link').children.text[/^[^\:]*/]
+  #
+  #   wine.pairing_rule = doc.css('.caption.margin-24-bottom p').text
+  #
+  #   wine.recipe_url = doc.css('.caption.margin-24-bottom a').attribute('href').value
+  #
+  #   wine
+  # end
 
 
 end
