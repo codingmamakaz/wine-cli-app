@@ -17,15 +17,17 @@ class WineCli::CLI
   def menu
     puts ""
     input = nil
-    # @wine = WineCli::Wine.scrape_all_wines
+    # @wines = WineCli::Wine.wines
     while input != "exit"
       puts ""
       puts "Please select a wine varietal and enter a number to view more information or type list to see the list again or type exit:"
       puts ""
       input = gets.strip
 
-        if input.to_i >= 0
+        if input.to_i > 0
+          # the_wine = @wines[input.to_i-1]
           puts "More info on #{input}: #{WineCli::Wine.scrape_and_print_varietal(input)}"
+          # binding.pry
           puts ""
           puts "#{WineCli::Wine.scrape_and_print_pairing_rule(input)}"
           puts ""
