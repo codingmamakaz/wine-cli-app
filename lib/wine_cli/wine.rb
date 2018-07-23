@@ -33,7 +33,11 @@ class WineCli::Wine
 
   def self.scrape_and_print_pairing_rule(input)
     doc = Nokogiri::HTML(open(BASE_URL))
-    doc.css('.caption.margin-24-bottom p')[input.to_i - 1].text
+    if input.to_i <= 5
+      doc.css('.caption.margin-24-bottom p')[input.to_i - 1].text
+    else
+      doc.css('.caption.margin-24-bottom p')[input.to_i].text
+    end
   end
 
   def self.scrape_and_print_recipe_url(input)
