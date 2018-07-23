@@ -33,7 +33,6 @@ class WineCli::Wine
 
   def self.scrape_and_print_recipe_url(input)
     doc = Nokogiri::HTML(open(BASE_URL))
-    binding.pry
     doc.css('.caption.margin-24-bottom a')[input.to_i - 1].attribute('href').value
   end
 
