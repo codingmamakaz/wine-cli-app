@@ -27,7 +27,6 @@ class WineCli::CLI
         if input.to_i > 0
           # the_wine = @wines[input.to_i-1]
           puts "More info on #{input}: #{WineCli::Wine.scrape_and_print_varietal(input)}"
-          # binding.pry
           puts ""
           puts "#{WineCli::Wine.scrape_and_print_pairing_rule(input)}"
           puts ""

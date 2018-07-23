@@ -13,9 +13,14 @@ class WineCli::Wine
     @@all << self
   end
 
+  def self.all
+    @@all
+  end
+
   def self.scrape_list_of_wines
     doc = Nokogiri::HTML(open(BASE_URL))
     doc.css('.headline-link').children.each.with_index(1) do |varietal, i|
+      self.new(varietal)
       varietal = varietal.text[/^[^\:]*/]
       puts "#{i}. #{varietal}"
     end
