@@ -5,7 +5,6 @@ class WineCli::CLI
     puts ""
     list
     menu
-    goodbye
   end
 
   def list
@@ -35,6 +34,8 @@ class WineCli::CLI
           puts "Check out a recipe to pair with the wine at #{WineCli::Wine.scrape_and_print_recipe_url(input)}"
         elsif input == "list"
           list
+        elsif input == "exit"
+          goodbye
         else
           puts "please enter a number between 1 to 15, list or exit"
         end
