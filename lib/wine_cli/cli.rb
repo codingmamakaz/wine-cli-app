@@ -17,7 +17,8 @@ class WineCli::CLI
   def menu
     puts ""
     input = nil
-    # @wines = WineCli::Wine.wines
+    @wines = WineCli::Wine.all
+
     while input != "exit"
       puts ""
       puts "Please select a wine varietal and enter a number to view more information or type list to see the list again or type exit:"
@@ -25,9 +26,10 @@ class WineCli::CLI
       input = gets.strip
 
         if input.to_i > 0
-          # the_wine = @wines[input.to_i-1]
-          puts "More info on #{input}: #{WineCli::Wine.scrape_and_print_varietal(input)}"
+          the_wine = @wines[input.to_i-1]
+          puts "More info on #{input}. #{the_wine.varietal}"
           puts ""
+          # puts "#{the_wine.pairing_rule}" <- I want to do this, but I can't get it to work.
           puts "#{WineCli::Wine.scrape_and_print_pairing_rule(input)}"
           puts ""
           puts "Check out a recipe to pair with the wine at #{WineCli::Wine.scrape_and_print_recipe_url(input)}"

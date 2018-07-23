@@ -41,5 +41,11 @@ class WineCli::Wine
     doc.css('.caption.margin-24-bottom a')[input.to_i - 1].attribute('href').value
   end
 
+  # def self.scrape_wine_details
+  #   doc = Nokogiri::HTML(open(url))
+  #
+  #   pairing_rule = doc.css('.caption.margin-24-bottom p').text
+  #   recipe_url = doc.css('.caption.margin-24-bottom a').attribute('href').value
+  # end
 
 end
