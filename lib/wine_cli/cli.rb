@@ -26,7 +26,7 @@ class WineCli::CLI
 
     while input != "exit"
       puts ""
-      puts "Please select a wine varietal, enter a number to view more information, or type list to see the list again or type exit:"
+      puts "Please select a wine varietal, enter a number to view information, or type list to see the list again or type exit:"
       puts ""
       input = gets.strip
 
@@ -37,7 +37,9 @@ class WineCli::CLI
           puts ""
           puts "- #{WineCli::Scraper.scrape_and_print_pairing_rule(input)}"
           puts ""
-          puts "Check out a recipe to pair with the wine at #{the_wine.recipe_url}"
+          puts "#{WineCli::Scraper.scrape_and_print_dish_name(the_wine)} is the suggested recipe."
+          puts ""
+          puts "Check out the recipe at #{the_wine.recipe_url}"
         elsif input == "list"
           list
         elsif input == "exit"

@@ -1,6 +1,6 @@
 class WineCli::Wine
 
-  attr_accessor :varietal, :pairing_rule, :recipe_url
+  attr_accessor :varietal, :pairing_rule, :recipe_url, :dish_name
 
   BASE_URL = "https://www.foodandwine.com/slideshows/15-rules-great-wine-and-food-pairings#10"
 

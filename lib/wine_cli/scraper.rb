@@ -22,4 +22,10 @@ class WineCli::Scraper
     end
   end
 
+  def self.scrape_and_print_dish_name(wine)
+    url = wine.recipe_url
+    doc = Nokogiri::HTML(open(url))
+    wine.dish_name = doc.css('.headline.heading-content.margin-8-top.margin-16-bottom').children.text
+  end
+
 end
