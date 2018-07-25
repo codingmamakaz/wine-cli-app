@@ -30,23 +30,24 @@ class WineCli::CLI
       puts ""
       input = gets.strip
 
-        if input.to_i > 0
-          the_wine = @wines[input.to_i-1]
-          puts ""
-          puts "#{input}. #{the_wine.varietal}"
-          puts ""
-          puts "- #{WineCli::Scraper.scrape_and_print_pairing_rule(input)}"
-          puts ""
-          puts "#{WineCli::Scraper.scrape_and_print_dish_name(the_wine)} is the suggested recipe."
-          puts ""
-          puts "Check out the recipe at #{the_wine.recipe_url}"
-        elsif input == "list"
-          list
-        elsif input == "exit"
-          goodbye
-        else
-          puts "please enter a number between 1 to 15, list or exit"
-        end
+      if input.to_i > 0 && input.to_i < 16
+        the_wine = @wines[input.to_i-1]
+
+        puts ""
+        puts "#{input}. #{the_wine.varietal}"
+        puts ""
+        puts "- #{WineCli::Scraper.scrape_and_print_pairing_rule(input)}"
+        puts ""
+        puts "#{the_wine.dish_name} is the suggested dish."
+        puts ""
+        puts "Check out the recipe at #{the_wine.recipe_url}"
+      elsif input == "list"
+        list
+      elsif input == "exit"
+        goodbye
+      else
+        puts "please enter a number between 1 to 15, list or exit"
+      end
     end
   end
 

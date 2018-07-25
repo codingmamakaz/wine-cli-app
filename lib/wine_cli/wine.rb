@@ -1,15 +1,13 @@
 class WineCli::Wine
 
-  attr_accessor :varietal, :pairing_rule, :recipe_url, :dish_name
-
-  BASE_URL = "https://www.foodandwine.com/slideshows/15-rules-great-wine-and-food-pairings#10"
+  attr_accessor :varietal, :dish_name, :recipe_url, :pairing_rule
 
   @@all = []
 
-  def initialize(varietal, recipe_url)
+  def initialize(varietal, recipe_url, dish_name)
     @varietal = varietal
-    @pairing_rule = pairing_rule
     @recipe_url = recipe_url
+    @dish_name = dish_name
     @@all << self
   end
 
