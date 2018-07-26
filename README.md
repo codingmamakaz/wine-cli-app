@@ -1,8 +1,6 @@
 # WineCli
 
-This Ruby Gem provides a CLI to view some wine pairing rules and recipes to pair with wines.
-
-In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/wine_cli`. To experiment with that code, run `bin/console` for an interactive prompt.
+This Ruby Gem provides a CLI to view wine pairing rules and recipes to pair with wines. It shows fifteen different wine varietals to view pairing rules, suggested dishes and recipe url.
 
 ## Installation
 
@@ -22,7 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Type the below and follow the on screen prompts.
+
+```$ gem wine_cli```
 
 ## Development
 
