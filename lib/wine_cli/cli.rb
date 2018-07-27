@@ -30,8 +30,9 @@ class WineCli::CLI
       puts ""
       input = gets.strip
 
-      if input.to_i > 0 && input.to_i < 16
+      if input.to_i > 0 && input.to_i < @wines.size + 1
         the_wine = @wines[input.to_i-1]
+        # binding.pry
 
         puts ""
         puts "#{input}. #{the_wine.varietal}"
