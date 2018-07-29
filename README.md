@@ -5,7 +5,7 @@ This Ruby Gem provides a CLI to view wine pairing rules and recipes to pair with
 ## Installation
 
 You can clone this repo by typing ```git clone git@github.com:codingmamakaz/wine-cli-app.git```
-in your command line and type ```cd wine-cli-app```
+in your command line.
 
 ## Usage
 
