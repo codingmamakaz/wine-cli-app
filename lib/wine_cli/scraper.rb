@@ -19,7 +19,7 @@ class WineCli::Scraper
     doc = Nokogiri::HTML(open(BASE_URL))
     if input.to_i <= 5
       doc.css('.caption.margin-24-bottom p')[input.to_i - 1].text
-    else #6th index returns an empty string so I need to skip 6th.
+    else #5th index returns an empty string so I need to skip 5th.
       doc.css('.caption.margin-24-bottom p')[input.to_i].text
     end
   end
