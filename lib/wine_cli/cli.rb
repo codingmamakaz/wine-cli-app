@@ -47,13 +47,13 @@ class WineCli::CLI
 
   def details
     puts ""
-        puts "#{@input}. #{@the_wine.varietal}"
-        puts ""
-        puts "- #{WineCli::Scraper.scrape_and_print_pairing_rule(@input)}"
-        puts ""
-        puts "#{@the_wine.dish_name} is the suggested dish."
-        puts ""
-        puts "Check out the recipe at #{@the_wine.recipe_url}"
+    puts "#{@input}. #{@the_wine.varietal}"
+    puts ""
+    puts "- #{WineCli::Scraper.scrape_and_print_pairing_rule(@input)}"
+    puts ""
+    puts "#{@the_wine.dish_name} is the suggested dish."
+    puts ""
+    puts "Check out the recipe at #{@the_wine.recipe_url}"
   end
 
   def goodbye
