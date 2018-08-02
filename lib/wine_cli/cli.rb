@@ -22,33 +22,38 @@ class WineCli::CLI
 
   def menu
     puts ""
-    input = nil
+    @input = nil
 
-    while input != "exit"
+    while @input != "exit"
       puts ""
       puts "Please select a wine varietal, enter a number to view information, or type list to see the list again or type exit:"
       puts ""
-      input = gets.strip
+      @input = gets.strip
 
-      if input.to_i > 0 && input.to_i < @wines.size + 1
-        the_wine = @wines[input.to_i-1]
-
-        puts ""
-        puts "#{input}. #{the_wine.varietal}"
-        puts ""
-        puts "- #{WineCli::Scraper.scrape_and_print_pairing_rule(input)}"
-        puts ""
-        puts "#{the_wine.dish_name} is the suggested dish."
-        puts ""
-        puts "Check out the recipe at #{the_wine.recipe_url}"
-      elsif input == "list"
+      if @input.to_i > 0 && @input.to_i <= @wines.size
+        @the_wine = @wines[@input.to_i-1]
+ 
+        details 
+        
+      elsif @input == "list"
         list
-      elsif input == "exit"
+      elsif @input == "exit"
         goodbye
       else
         puts "please enter a number between 1 to 15, list or exit"
       end
     end
+  end
+
+  def details
+    puts ""
+        puts "#{@input}. #{@the_wine.varietal}"
+        puts ""
+        puts "- #{WineCli::Scraper.scrape_and_print_pairing_rule(@input)}"
+        puts ""
+        puts "#{@the_wine.dish_name} is the suggested dish."
+        puts ""
+        puts "Check out the recipe at #{@the_wine.recipe_url}"
   end
 
   def goodbye
